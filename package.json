@@ -1,0 +1,24 @@
+{
+  "name": "rpi",
+  "version": "0.0.1",
+  "description": "Raspberry Pi GPIO communication on top of WiringPi",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "raspberry",
+    "pi",
+    "gpio",
+    "wiringpi"
+  ],
+  "author": "Xavier Seignard <xavier.seignard@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "sinon": "~1.7.3",
+    "mocha": "~1.12.0",
+    "chai": "~1.7.2",
+    "istanbul": "~0.1.43",
+    "jshint": "~2.1.9"
+  }
+}
