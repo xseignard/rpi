@@ -2,18 +2,21 @@
   "name": "rpi",
   "version": "0.0.1",
   "description": "Raspberry Pi GPIO communication on top of WiringPi",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/xseignard/rpi.git"
   },
-  "keywords": [
-    "raspberry",
-    "pi",
-    "gpio",
-    "wiringpi"
-  ],
+  "main": "./src/rpi.js",
+  "scripts": {
+    "test": "make test"
+  },
   "author": "Xavier Seignard <xavier.seignard@gmail.com>",
+  "keywords": ["raspberry", "pi", "gpio", "wiringpi"],
   "license": "MIT",
+  "homepage": "https://github.com/xseignard/rpi",
+  "bugs": {
+    "url": "https://github.com/xseignard/rpi/issues"
+  },
   "devDependencies": {
     "sinon": "~1.7.3",
     "mocha": "~1.12.0",
