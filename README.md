@@ -1,4 +1,4 @@
-# rpi
+# rpi [![Build Status](https://travis-ci.org/xseignard/rpi.png?branch=master)](https://travis-ci.org/xseignard/rpi)
 
 Yet another Node.js library to use the Raspberry Pi GPIOs.
 

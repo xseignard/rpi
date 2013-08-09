@@ -51,7 +51,7 @@ GPIO.prototype.low = function(callback) {
 GPIO.prototype.read = function(callback) {
 	proc.exec([gpio, 'read', this.pinNumber].join(' '), function(error, stdout, stderr) {
 		if (error) throw new Error(stderr);
-		if (typeof callback === 'function') callback(stdout);
+		if (typeof callback === 'function') callback(stdout.trim());
 	});
 };
 
