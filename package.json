@@ -1,6 +1,6 @@
 {
   "name": "rpi",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Raspberry Pi GPIO communication on top of WiringPi",
   "repository": {
     "type": "git",
