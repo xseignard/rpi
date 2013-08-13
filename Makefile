@@ -2,6 +2,7 @@ MOCHA="node_modules/.bin/mocha"
 _MOCHA="node_modules/.bin/_mocha"
 JSHINT="node_modules/.bin/jshint"
 ISTANBUL="node_modules/.bin/istanbul"
+DOX="node_modules/.bin/dox"
 
 TESTS=$(shell find test/ -name "*.test.js")
 
@@ -19,4 +20,8 @@ coverage:
 	@test -d reports || mkdir reports
 	$(ISTANBUL) cover --dir ./reports $(_MOCHA) -- -R spec $(TESTS)
 
-.PHONY: clean test jshint coverage
+docs:
+	cp README.tpl README.md
+	$(DOX) -a < src/lib/gpio.js >> README.md
+
+.PHONY: clean test jshint coverage docs
