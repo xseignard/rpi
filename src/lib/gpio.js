@@ -44,7 +44,7 @@ var GPIO = function(pinNumber, direction) {
 	_self.direction = direction;
 	currentValue = -1;
 
-	proc.execFile(gpio ['mode', pinNumber, direction], function(error, stdout, stderr) {
+	proc.execFile(gpio, ['mode', pinNumber, direction], function(error, stdout, stderr) {
 		if (error) throw new Error(stderr);
 		_self.emit(gpioEventNames.ready);
 		if (_self.direction === 'in') {
