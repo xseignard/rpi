@@ -40,11 +40,16 @@ var gpioEventNames = {
  */
 var GPIO = function(pinNumber, direction) {
 	var _self = this;
+	if (!isNaN(pinNumber))
+		pinNumber = Number(pinNumber)
+	else
+		throw new Error("The pin is invalid: not a number")
+	
 	_self.pinNumber = pinNumber;
 	_self.direction = direction;
 	currentValue = -1;
 
-	proc.exec([gpio, 'mode', pinNumber, direction].join(' '), function(error, stdout, stderr) {
+	proc.execFile(gpio, ['mode', pinNumber, direction], function(error, stdout, stderr) {
 		if (error) throw new Error(stderr);
 		_self.emit(gpioEventNames.ready);
 		if (_self.direction === 'in') {
@@ -74,8 +79,9 @@ util.inherits(GPIO, EventEmitter);
  * @throws {Error} - an Error if the write went wrong
  */
 GPIO.prototype.write = function(value, callback) {
+	if (isNaN(this.pinNumber)) throw new Error('The pin is invalid: not a number')
 	if (this.direction !== 'out') throw new Error('The pin is not configured in "out" mode');
-	proc.exec([gpio, 'write', this.pinNumber, value].join(' '), function(error, stdout, stderr) {
+	proc.execFile(gpio, ['write', this.pinNumber, value], function(error, stdout, stderr) {
 		if (error) throw new Error(stderr);
 		if (typeof callback === 'function') callback();
 	});
@@ -103,7 +109,8 @@ GPIO.prototype.low = function(callback) {
  * @throws {Error} - an Error if the read went wrong
  */
 GPIO.prototype.read = function(callback) {
-	proc.exec([gpio, 'read', this.pinNumber].join(' '), function(error, stdout, stderr) {
+	if (isNaN(this.pinNumber)) throw new Error('The pin is invalid: not a number')
+	proc.execFile(gpio, ['read', this.pinNumber], function(error, stdout, stderr) {
 		if (error) throw new Error(stderr);
 		if (typeof callback === 'function' && typeof stdout === 'string') callback(stdout.trim());
 	});
